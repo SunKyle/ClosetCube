@@ -1,0 +1,40 @@
+<view class="main-container">
+  <!-- 顶部栏 -->
+  <view class="top-bar">
+    <view class="back-button" bindtap="goBack">
+      <image src="/images/back.png" mode="aspectFit"></image>
+    </view>
+    <view class="user-avatar" bindtap="showMenu">
+      <image src="/images/avatar.png" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <!-- 中部功能区 -->
+  <view class="function-cards">
+    <view class="function-card" bindtap="goToCloset">
+      <image class="card-icon" src="/images/closet-icon.png"></image>
+      <text class="card-text">我的衣柜</text>
+    </view>
+    <view class="function-card" bindtap="goToMatch">
+      <image class="card-icon" src="/images/match-icon.png"></image>
+      <text class="card-text">搭配推荐</text>
+    </view>
+    <view class="function-card" bindtap="goToAddCloth">
+      <image class="card-icon" src="/images/add-icon.png"></image>
+      <text class="card-text">添加衣物</text>
+    </view>
+  </view>
+
+  <!-- 底部标签栏 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 0? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+      <image src="/images/home-icon{{currentTab === 0? '-active' : ''}}.png" mode="aspectFit"></image>
+    </view>
+    <view class="tab-item {{currentTab === 1? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+      <image src="/images/add-icon{{currentTab === 1? '-active' : ''}}.png" mode="aspectFit"></image>
+    </view>
+    <view class="tab-item {{currentTab === 2? 'active' : ''}}" bindtap="switchTab" data-tab="2">
+      <image src="/images/user-icon{{currentTab === 2? '-active' : ''}}.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
