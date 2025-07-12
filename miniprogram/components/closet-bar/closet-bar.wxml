@@ -1,0 +1,17 @@
+<view class="navbar-container" style="position: fixed; left: 2rpx; top: 162rpx; height: 93rpx; display: flex; box-sizing: border-box">  
+  <view class="icons-group">
+    <!-- 搜索图标：增加点击缩放反馈 -->
+    <view class="icon-wrapper" bindtap="onSearchTap">
+      <icon bind:tap="onSearchTap" type="search" size="24" class="nav-icon" />
+    </view>
+    
+    <!-- 编辑图标：根据模式切换图标与样式 -->
+    <view class="icon-wrapper" bindtap="onEditTap" style="width: 56rpx; display: flex; box-sizing: border-box">
+      <icon 
+        type="{{isEditMode ? 'check' : 'edit'}}" 
+        size="24" 
+        class="nav-icon {{isEditMode ? 'edit-active' : ''}}" 
+      />
+    </view>
+  </view>
+</view>

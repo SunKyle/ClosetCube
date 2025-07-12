@@ -1,0 +1,17 @@
+{
+  "name": "miniprogram",
+  "version": "1.0.0",
+  "description": "This is a WeChat Mini Program project, including basic pages and component structure, suitable for rapid development and deployment of WeChat Mini Program applications.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "media-typer": "^1.1.0",
+    "tdesign-miniprogram": "^1.9.7"
+  }
+}

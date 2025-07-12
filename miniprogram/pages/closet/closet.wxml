@@ -1,0 +1,27 @@
+<!-- 1. 顶部导航栏组件 -->
+<closet-bar isEditMode="true"></closet-bar>
+
+
+<!-- 衣物卡片 -->
+<clothes-card 
+    wx:for="{{clothesList}}" 
+    wx:key="id"
+    clothes="{{item}}"
+    isEditMode="{{isEditMode}}"
+    bind:cardClick="onCardClick"
+    bind:cardLongPress="onCardLongPress"
+    bind:favoriteChange="onFavoriteChange"
+    bind:delete="onDeleteClothes"
+  />
+<!-- <clothes-card 
+  wx:for="{{clothesList}}" 
+  wx:key="id"
+  item="{{item}}"
+  showEditButtons="{{showEditButtons}}"
+  currentId="{{currentId}}"
+  bind:cardtap="onCardTap"
+  bind:longpress="onCardLongPress"
+  bind:edit="onEditClothes"
+  bind:delete="onDeleteClothes"
+  bind:togglefavorite="onToggleFavorite"
+></clothes-card> -->

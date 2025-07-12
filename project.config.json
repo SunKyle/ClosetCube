@@ -12,14 +12,30 @@
             "outputPath": ""
         },
         "useCompilerPlugins": false,
-        "minifyWXML": true
+        "minifyWXML": true,
+        "autoAudits": true,
+        "checkInvalidKey": true,
+        "compileHotReLoad": true,
+        "compileType": "miniprogram",
+        "condition": false
     },
-    "compileType": "plugin",
     "simulatorPluginLibVersion": {},
     "packOptions": {
         "ignore": [],
         "include": []
     },
     "appid": "wx17c01703d4ef7c72",
-    "editorSetting": {}
+    "editorSetting": {},
+    "libVersion": "3.8.3",
+    "miniprogramRoot": "miniprogram/",
+    "packNpmManually": true,
+    "packNpmRelationList": [
+        {
+            "packageJsonPath": "./package.json",
+            "miniprogramNpmDistDir": "./miniprogram/"
+        }
+    ],
+    "dependencies": {
+        "tdesign-miniprogram": "^1.3.0"
+    }
 }

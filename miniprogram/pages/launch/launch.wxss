@@ -1,0 +1,155 @@
+/* 全局样式 */
+.launch-container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* 背景装饰元素 */
+  .launch-container::before {
+    content: "";
+    position: absolute;
+    top: -100rpx;
+    right: -100rpx;
+    width: 400rpx;
+    height: 400rpx;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  .launch-container::after {
+    content: "";
+    position: absolute;
+    bottom: -150rpx;
+    left: -150rpx;
+    width: 500rpx;
+    height: 500rpx;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Logo容器 */
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 120rpx;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .logo-image {
+    width: 180rpx;
+    height: 180rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.15);
+    border-radius: 20rpx;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-image:hover {
+    transform: scale(1);
+  }
+  
+  .logo-text {
+    font-size: 56rpx;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15rpx;
+    letter-spacing: 2rpx;
+    text-shadow: 0 5rpx 10rpx rgba(0, 0, 0, 0.1);
+  }
+  
+  .slogan {
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1rpx;
+  }
+  
+  /* 加载指示器 */
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+  }
+  
+  .loading-dots {
+    display: flex;
+    margin-bottom: 20rpx;
+  }
+  
+  .loading-dot {
+    width: 15rpx;
+    height: 15rpx;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin: 0 10rpx;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  
+  .dot-1 {
+    animation-delay: -0.32s;
+  }
+  
+  .dot-2 {
+    animation-delay: -0.16s;
+  }
+  
+  .loading-text {
+    font-size: 28rpx;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 1rpx;
+  }
+  
+  /* 版本信息 */
+  .version-info {
+    position: absolute;
+    bottom: 60rpx;
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.6);
+    z-index: 2;
+  }
+  
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 30rpx, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }    

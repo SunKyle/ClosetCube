@@ -1,0 +1,47 @@
+<view class="category-panel">
+  <!-- 分类列表 -->
+  <view class="category-list">
+    <view 
+      class="category-item {{item.id === activeCategoryId ? 'active' : ''}}" 
+      wx:for="{{categories}}" 
+      wx:key="id"
+    >
+      <!-- 分类标题 -->
+      <view class="category-header" bindtap="onCategoryTap" data-id="{{item.id}}">
+        <text>{{item.name}}</text>
+        
+        <!-- 展开/收起图标 -->
+        <image 
+          class="expand-icon" 
+          src="{{item.expanded ? '/images/arrow-down.png' : '/images/arrow-right.png'}}" 
+          mode="aspectFit"
+          bindtap="onToggleSubCategory"
+          data-id="{{item.id}}"
+        ></image>
+      </view>
+      
+      <!-- 编辑按钮组（编辑模式显示） -->
+      <view class="edit-buttons" wx:if="{{isEditing}}">
+        <view class="edit-btn" bindtap="onEditCategory" data-id="{{item.id}}">编辑</view>
+        <view class="delete-btn" bindtap="onDeleteCategory" data-id="{{item.id}}">删除</view>
+      </view>
+      
+      <!-- 子分类列表（展开状态显示） -->
+      <view class="sub-category-list" wx:if="{{item.expanded}}">
+        <view class="sub-category-item" wx:for="{{item.subCategories}}" wx:key="index">
+          {{item}}
+        </view>
+        
+        <!-- 添加子分类按钮（编辑模式显示） -->
+        <view class="add-sub-category-btn" wx:if="{{isEditing}}" bindtap="onAddSubCategory" data-id="{{item.id}}">
+          <text>+ 添加子分类</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 添加分类按钮（编辑模式显示） -->
+    <view class="add-category-btn" wx:if="{{isEditing}}" bindtap="onAddCategory">
+      <text>+ 添加大分类</text>
+    </view>
+  </view>
+</view>

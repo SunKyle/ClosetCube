@@ -1,0 +1,87 @@
+<!-- 搜索栏（原生组件：view + input） -->
+<view class="search-bar">
+  <view class="search-input">
+    <icon type="search" size="24" color="#999"></icon>
+    <input 
+      placeholder="搜索商品、分类" 
+      placeholder-class="placeholder-style"
+      bindinput="onSearchInput"
+    ></input>
+  </view>
+</view>
+
+<!-- 轮播图（原生组件：swiper + swiper-item） -->
+<view class="banner-container">
+  <swiper 
+    indicator-dots 
+    autoplay 
+    interval="5000" 
+    duration="500"
+    indicator-active-color="#07c160"
+  >
+    <swiper-item wx:for="{{bannerList}}" wx:key="index">
+      <image 
+        src="{{item.url}}" 
+        mode="widthFix" 
+        class="banner-img"
+        bindtap="goToBannerDetail"
+      ></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!-- 快捷入口（原生组件：view + icon） -->
+<!-- <view class="quick-entrance">
+  <view class="entrance-item" wx:for="{{entranceList}}" wx:key="index" bindtap="goToPage">
+    <view class="entrance-icon">
+      <icon type="{{item.icon}}" size="36" color="{{item.color}}"></icon>
+    </view>
+    <text class="entrance-text">{{item.name}}</text>
+  </view>
+</view> -->
+
+<!-- 分类标题（原生组件：view） -->
+<view class="section-title">
+  <text class="title-text">热门分类</text>
+  <text class="more-text" bindtap="goToAllCategory">查看全部 →</text>
+</view>
+
+<!-- 分类列表（原生组件：scroll-view） -->
+<scroll-view 
+  class="category-scroll" 
+  scroll-x 
+  show-scrollbar="{{false}}"
+>
+  <view class="category-item" wx:for="{{categoryList}}" wx:key="id" bindtap="goToCategory">
+    <image src="{{item.img}}" mode="widthFix" class="category-img"></image>
+    <text class="category-name">{{item.name}}</text>
+  </view>
+</scroll-view>
+
+<!-- 商品列表（原生组件：view + checkbox） -->
+<view class="section-title">
+  <text class="title-text">推荐商品</text>
+</view>
+<view class="goods-list">
+  <view class="goods-item" wx:for="{{goodsList}}" wx:key="id">
+    <checkbox 
+      class="goods-select" 
+      checked="{{item.selected}}" 
+      bindchange="onSelectGoods"
+      data-id="{{item.id}}"
+    ></checkbox>
+    <image src="{{item.img}}" mode="widthFix" class="goods-img"></image>
+    <view class="goods-info">
+      <text class="goods-name">{{item.name}}</text>
+      <text class="goods-price">¥{{item.price}}</text>
+      <view class="goods-footer">
+        <text class="goods-sales">销量{{item.sales}}</text>
+        <view class="goods-actions">
+          <button size="mini" bindtap="decreaseNum">-</button>
+          <text>{{item.num}}</text>
+          <button size="mini" bindtap="increaseNum">+</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

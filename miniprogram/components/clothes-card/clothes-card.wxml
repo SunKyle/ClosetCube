@@ -1,0 +1,77 @@
+<view class="clothes-card-container" 
+      bindtap="onCardTap" 
+      bindlongpress="onCardLongPress"
+      style="opacity: {{isFading ? 0.5 : 1}}; transform: {{isScaling ? 'scale(0.98)' : 'scale(1)'}}">
+  <!-- 卡片容器：使用 TDesign 的卡片组件 -->
+  <td-card 
+    class="card-wrapper"
+    cornerRadius="12rpx"
+    bordered="{{false}}"
+    shadow="light"
+  >
+    <!-- 衣物主图：支持多图切换（默认显示第一张） -->
+    <view class="card-image-container">
+      <td-image 
+        class="main-image"
+        src="{{clothes.images[0] || defaultImage}}"
+        mode="aspectFill"
+        lazyLoad
+        placeholder="加载中..."
+        errorIcon="error-circle"
+      ></td-image>
+      
+      <!-- 多图标识（当图片数量 > 1 时显示） -->
+      <view class="multi-image-tag" wx:if="{{clothes.images.length > 1}}">
+        <text>{{clothes.images.length}}图</text>
+      </view>
+    </view>
+
+    <!-- 标签区域（右上角：季节/场合/状态） -->
+    <view class="tags-container">
+      <td-tag 
+        wx:for="{{clothes.tags.slice(0, 3)}}" 
+        wx:key="index"
+        size="small"
+        shape="square"
+        class="tag-item"
+        style="background-color: {{tagBgColors[index % tagBgColors.length]}};"
+      >
+        {{item}}
+      </td-tag>
+    </view>
+
+    <!-- 底部信息栏 -->
+    <view class="card-info">
+      <!-- 左侧：小分类标签 -->
+      <td-tag 
+        size="mini"
+        shape="round"
+        theme="light"
+        class="category-tag"
+      >
+        {{clothes.subCategory}}
+      </td-tag>
+      
+      <!-- 右侧：衣物名称（超出省略） -->
+      <text class="clothes-name">{{clothes.name}}</text>
+    </view>
+
+    <!-- 收藏标识（右上角） -->
+    <view class="favorite-icon" bindtap="onFavoriteTap" catchtap>
+      <td-icon 
+        name="{{clothes.isFavorite ? 'star-fill' : 'star'}}"
+        size="28rpx"
+        color="{{clothes.isFavorite ? '#FFCC00' : '#999'}}"
+      ></td-icon>
+    </view>
+  </td-card>
+
+  <!-- 编辑模式：删除按钮（默认隐藏） -->
+  <view class="delete-btn" wx:if="{{isEditMode}}">
+    <td-icon 
+      name="delete" 
+      size="32rpx" 
+      color="#F53F3F"
+    ></td-icon>
+  </view>
+</view>

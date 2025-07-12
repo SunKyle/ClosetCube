@@ -1,0 +1,60 @@
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    /* 安全区域适配：分离内容高度与安全区高度 */
+    min-height: 150rpx;
+    padding-top: env(safe-area-inset-top);
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    /* 底部阴影：更细腻的层次感 */
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    /* 避免内容溢出 */
+    overflow: hidden;
+  }
+  
+  /* 标题样式：增加字重与抗锯齿 */
+  .title {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: 0.5rpx;
+    /* 防止文字模糊 */
+    transform: translateZ(0);
+  }
+  
+  .icons-group {
+    display: flex;
+    gap: 32rpx; /* 增大间距，避免误触 */
+  }
+  
+  /* 图标容器：实现点击缩放反馈 */
+  .icon-wrapper {
+    width: 56rpx;
+    height: 56rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.15s ease;
+  }
+  .icon-wrapper:active {
+    transform: scale(0.9); /* 点击时缩小反馈 */
+    background-color: rgba(0, 0, 0, 0.05); /* 点击背景色 */
+  }
+  
+  .nav-icon {
+    color: #595959;
+    transition: color 0.2s ease;
+  }
+  
+  /* 编辑模式激活状态 */
+  .edit-active {
+    color: #07c160; /* 主题色高亮 */
+  }

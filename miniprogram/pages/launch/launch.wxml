@@ -1,0 +1,19 @@
+<view class="launch-container">
+  <!-- 品牌Logo -->
+  <view class="logo-container">
+    <image class="logo-image" src="/images/logo.png" mode="aspectFit"></image>
+    <text class="logo-text">ClosetCube</text>
+    <text class="slogan">智能衣橱管理专家</text>
+  </view>
+
+  <!-- 加载指示器 -->
+  <view class="loading-container">
+    <view class="loading-dot dot-1"></view>
+    <view class="loading-dot dot-2"></view>
+    <view class="loading-dot dot-3"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 版本信息 -->
+  <text class="version-info">v1.0.0</text>
+</view>    

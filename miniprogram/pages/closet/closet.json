@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "clothes-card": "/components/clothes-card/clothes-card",
+        "category-panel": "/components/category-panel/category-panel",
+        "closet-bar": "/components/closet-bar/closet-bar",
+        "t-button": "tdesign-miniprogram/button/button"
+    }
+}
