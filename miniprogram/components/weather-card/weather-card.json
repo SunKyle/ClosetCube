@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "td-tabs": "tdesign-miniprogram/tabs/tabs",
+        "td-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
+        "td-button": "tdesign-miniprogram/button/button"
+    }
+}

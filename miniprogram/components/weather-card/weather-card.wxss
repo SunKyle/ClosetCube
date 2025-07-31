@@ -1,0 +1,18 @@
+/* weather-card.wxss */
+.weather-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .weather-icon {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  
+  .scene-tab {
+    transition: all 0.3s ease;
+  }
+  
+  .info-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+  }

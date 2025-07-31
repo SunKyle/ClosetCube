@@ -1,22 +1,5 @@
 {
-  "name": "closetcube",
-  "version": "1.0.0",
-  "description": "This is a WeChat Mini Program project, including basic pages and component structure, suitable for rapid development and deployment of WeChat Mini Program applications.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SunKyle/ClosetCube.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SunKyle/ClosetCube/issues"
-  },
-  "homepage": "https://github.com/SunKyle/ClosetCube#readme",
-  "dependencies": {
-    "tdesign-miniprogram": "^1.9.7"
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }

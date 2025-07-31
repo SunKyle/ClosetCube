@@ -1,0 +1,27 @@
+<!-- sidebar/index.wxml -->
+<view class="sidebar-container">
+    <!-- 侧边栏内容 -->
+    <t-motion class="sidebar"
+              :show="isOpen"
+              type="transition"
+              :from="{ transform: 'translateY(-100%)', opacity: 0 }"
+              :to="{ transform: 'translateY(0)', opacity: 1 }"
+              duration="500"
+              easing="cubic-bezier(0.34, 1.56, 0.64, 1)">
+        <view class="sidebar-content"
+              style="transform: translateY({{-sidebarOffset}}px)">
+            <!-- 侧边栏菜单项 -->
+            <view class="menu-item"
+                  wx:for="{{10}}"
+                  wx:key="*this">
+                菜单项 {{item}}
+            </view>
+        </view>
+    </t-motion>
+
+    <!-- 切换按钮 -->
+    <button class="toggle-btn"
+            bindtap="toggleSidebar">
+        {{isOpen ? '收起' : '展开'}}
+    </button>
+</view>

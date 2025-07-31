@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/closet/closet",
         "pages/launch/launch",
         "pages/home/home",
-        "pages/closet/closet",
         "pages/outfit/outfit",
         "pages/mine/mine"
     ],
@@ -34,6 +34,16 @@
     "window": {
         "navigationBarTextStyle": "black",
         "navigationStyle": "custom"
+    },
+    "usingComponents": {
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-search": "tdesign-miniprogram/search/search",
+        "t-tree-select": "tdesign-miniprogram/tree-select/tree-select",
+        "t-side-bar": "tdesign-miniprogram/side-bar/side-bar",
+        "t-side-bar-item": "tdesign-miniprogram/side-bar-item/side-bar-item",
+        "t-grid": "tdesign-miniprogram/grid/grid",
+        "t-grid-item": "tdesign-miniprogram/grid-item/grid-item",
+        "t-avatar": "tdesign-miniprogram/avatar/avatar"
     },
     "renderer": "skyline",
     "rendererOptions": {

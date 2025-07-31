@@ -1,8 +1,11 @@
 {
+    "navigationBarBackgroundColor": "#fff",
     "usingComponents": {
-        "clothes-card": "/components/clothes-card/clothes-card",
-        "category-panel": "/components/category-panel/category-panel",
-        "closet-bar": "/components/closet-bar/closet-bar",
-        "t-button": "tdesign-miniprogram/button/button"
+        "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-popup": "tdesign-miniprogram/popup/popup",
+        "t-navbar": "tdesign-miniprogram/navbar/navbar",
+        "t-input": "tdesign-miniprogram/input/input",
+        "add-category-modal": "/components/add-category-modal/add-category-modal"
     }
 }

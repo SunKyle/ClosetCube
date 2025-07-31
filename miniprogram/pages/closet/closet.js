@@ -1,112 +1,172 @@
+const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
 Page({
+    // offsetTopList: [],
+    lastScrollTop: 0,
     data: {
-      // 衣物卡片数据列表
-      clothesList: [
-        {
-          id: "clo001",
-          name: "黑色连帽卫衣（加绒）",
-          images: [
-            "/images/wardrobe/hoodie-black-01.jpg",
-            "/images/wardrobe/hoodie-black-02.jpg" // 背面图
-          ],
-          category: "卫衣", // 小分类名称
-          season: "冬季",
-          occasion: "休闲",
-          favorite: false,
-          color: "黑色",
-          status: "可穿" // 状态标签（可穿/待洗/已穿）
-        },
-        {
-          id: "clo002",
-          name: "浅蓝色修身牛仔裤",
-          images: [
-            "/images/wardrobe/jeans-blue-01.jpg"
-          ],
-          category: "牛仔裤",
-          season: "四季",
-          occasion: "通勤",
-          favorite: true,
-          color: "浅蓝色",
-          status: "待洗"
-        },
-        {
-          id: "clo003",
-          name: "白色帆布鞋（经典款）",
-          images: [
-            "/images/wardrobe/shoes-white-01.jpg",
-            "/images/wardrobe/shoes-white-02.jpg" // 鞋底细节
-          ],
-          category: "帆布鞋",
-          season: "春季",
-          occasion: "休闲",
-          favorite: true,
-          color: "白色",
-          status: "可穿"
-        },
-        {
-          id: "clo004",
-          name: "条纹短袖T恤",
-          images: [
-            "/images/wardrobe/tshirt-stripe-01.jpg"
-          ],
-          category: "T恤",
-          season: "夏季",
-          occasion: "运动",
-          favorite: false,
-          color: "蓝白条纹",
-          status: "已穿"
-        },
-        {
-          id: "clo005",
-          name: "灰色西装裤（垂感）",
-          images: [
-            "/images/wardrobe/pants-gray-01.jpg",
-            "/images/wardrobe/pants-gray-02.jpg" // 侧面图
-          ],
-          category: "休闲裤",
-          season: "四季",
-          occasion: "正式",
-          favorite: true,
-          color: "灰色",
-          status: "可穿"
-        },
-        {
-          id: "clo006",
-          name: "米色针织开衫",
-          images: [
-            "/images/wardrobe/cardigan-beige-01.jpg"
-          ],
-          category: "开衫",
-          season: "秋季",
-          occasion: "约会",
-          favorite: false,
-          color: "米色",
-          status: "待洗"
-        }
-      ],
-      // 其他页面数据（如筛选状态、当前选中ID等）
-      showEditButtons: false,
-      currentId: ""
+        searchValue: '', //搜索框值
+        newCategoryName: '', //新增分类
+        selectedMainCategories: 0, //选中的衣物大类
+        selectedSubCategories: '0', //选中的衣物小类
+        visible: 'false',
+        mainCategories: [{ //衣物大类
+                label: '上衣',
+                icon: 'app',
+            },
+            {
+                label: '裤子',
+                icon: 'app',
+            },
+            {
+                label: '裙子',
+                icon: 'app',
+            },
+            {
+                label: '短袖',
+                icon: 'app',
+            },
+            {
+                label: '外套',
+                icon: 'app',
+            },
+        ],
+        subCategories: [{
+            value: "",
+            label: "衣物1"
+        }, {
+            value: "",
+            label: "衣物1"
+        }, {
+            value: "",
+            label: "衣物1"
+        }, {
+            value: "",
+            label: "衣物1"
+        }, ],
+        navbarHeight: 0,
     },
-    onCategoryTap(e) {
-        const { id } = e.detail;
-        this.setData({ activeCategoryId: id });
-        // 加载对应分类的衣物
-        this.loadClothesByCategory(id);
-      },
-      
-      onAddCategory() {
-        // 显示添加分类弹窗
-        wx.showModal({
-          title: "添加分类",
-          placeholderText: "请输入分类名称",
-          success: (res) => {
-            if (res.confirm && res.content.trim()) {
-              // 添加新分类逻辑
-            }
-          }
+    // 输入时实时更新 searchValue
+    onChange(e) {
+        this.setData({
+            searchValue: e.detail.value
         });
-      }
+    },
+    // 搜索框失焦
+    blurHandle() {
+        console.log(this.data.searchValue)
+    },
+    // siderbar修改
+    onSideBarChange(e) {
+        const value = e.detail.value;
+        this.setData({
+            selectedMainCategories: value,
+        });
+        console.log(this.data.selectedMainCategories)
+    },
+    // 加载页面
+    onLoad() {
 
-    // 页面方法...
-  });
+    },
+    // 监听输入框变化，实时更新newCategoryName
+    onCategoryInput(e) {
+        this.setData({
+            newCategoryName: e.detail.value
+        });
+        console.log(e.detail.value)
+    },
+
+    // 添加分类
+    addCategory(e) {
+        // 获取传递的对象
+        const category = e.detail.newCategory;
+
+        // 构建新分类对象
+        const newCategory = {
+            label: category.label,
+            icon: category.icon // 默认图标
+        };
+
+        // 将新分类添加到数组（使用扩展运算符创建新数组，避免直接修改原数组）
+        const updatedCategories = [...this.data.mainCategories, newCategory];
+
+        // 更新数据
+        this.setData({
+            mainCategories: updatedCategories,
+        });
+
+        // 提示添加成功
+        wx.showToast({
+            title: '添加成功',
+            icon: 'success',
+            duration: 1500
+        });
+    },
+
+    // 长按删除分类
+    onSiderLongpress(e) {
+        // 获取当前分类的索引
+        const index = e.currentTarget.dataset.index;
+        console.log(index)
+        const categoryName = this.data.mainCategories[index].label;
+
+        // 显示确认删除对话框
+        wx.showModal({
+            title: '删除分类',
+            content: `确定要删除"${categoryName}"吗？`,
+            cancelText: '取消',
+            confirmText: '删除',
+            success: (res) => {
+                if (res.confirm) {
+                    // 用户确认删除，执行删除逻辑
+                    this.deleteCategory(index);
+                }
+            }
+        });
+    },
+
+    // 删除衣物大类
+    deleteCategory(index) {
+        // 1. 复制原数组（避免直接修改原数据）
+        const updatedCategories = [...this.data.mainCategories];
+
+        // 2. 删除指定索引的元素
+        updatedCategories.splice(index, 1);
+
+        // 3. 更新数据（如果有选中状态，需要同步处理）
+        this.setData({
+            mainCategories: updatedCategories,
+            // 如果删除的是当前选中项，重置选中状态
+            selectedMainCategories: this.data.selectedMainCategories === index ?
+                0 : this.data.selectedMainCategories
+        });
+
+        // 4. 提示删除成功
+        wx.showToast({
+            title: '删除成功',
+            icon: 'success',
+            duration: 1500
+        });
+
+        // 5. 持久化保存（可选）
+    },
+
+    // 添加分类弹窗
+    handlePopup(e) {
+        this.setData({
+            visible: true,
+        });
+    },
+    onVisibleChange(e) {
+        this.setData({
+            visible: e.detail.visible,
+        });
+    },
+    //关闭弹窗
+    onClose() {
+        this.setData({
+            visible: false,
+            showAddModal: false
+        });
+    },
+
+
+});

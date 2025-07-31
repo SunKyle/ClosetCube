@@ -1,0 +1,83 @@
+<!-- weather-card.wxml -->
+<view class="weather-card bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 mb-4">
+  <!-- 主要天气信息 -->
+  <view class="flex items-center justify-between mb-4">
+    <view class="flex items-center">
+      <i class="fa fa-sun-o text-weather-sunny text-4xl mr-3 weather-icon"></i>
+      <view>
+        <view class="text-2xl font-bold">26℃ 晴</view>
+        <view class="text-neutral-light text-sm">体感舒适 · 微风</view>
+      </view>
+    </view>
+    <view class="text-right">
+      <view class="text-sm font-medium">周三 7月12日</view>
+      <view class="text-xs text-neutral-light">更新于 08:30</view>
+    </view>
+  </view>
+  
+  <!-- 天气详情卡片 -->
+  <view class="grid grid-cols-3 gap-3 mb-4">
+    <view class="info-card p-3 text-center">
+      <view class="text-xs text-neutral-light mb-1">温度范围</view>
+      <view class="flex items-center justify-center">
+        <i class="fa fa-thermometer-half text-weather-sunny mr-1"></i>
+        <text class="text-sm font-medium">22~28℃</text>
+      </view>
+    </view>
+    <view class="info-card p-3 text-center">
+      <view class="text-xs text-neutral-light mb-1">湿度</view>
+      <view class="flex items-center justify-center">
+        <i class="fa fa-tint text-weather-humid mr-1"></i>
+        <text class="text-sm font-medium">58%</text>
+      </view>
+    </view>
+    <view class="info-card p-3 text-center">
+      <view class="text-xs text-neutral-light mb-1">空气质量</view>
+      <view class="flex items-center justify-center">
+        <i class="fa fa-leaf text-weather-aqi-good mr-1"></i>
+        <text class="text-sm font-medium text-weather-aqi-good">优</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 场景标签 -->
+  <td-tabs value="{{activeScene}}" type="line" line-width="30" class="w-full">
+    <td-tab-panel label="通勤" name="work">
+      <view slot="icon">
+        <i class="fa fa-briefcase"></i>
+      </view>
+    </td-tab-panel>
+    <td-tab-panel label="周末" name="weekend">
+      <view slot="icon">
+        <i class="fa fa-coffee"></i>
+      </view>
+    </td-tab-panel>
+    <td-tab-panel label="运动" name="sport">
+      <view slot="icon">
+        <i class="fa fa-futbol-o"></i>
+      </view>
+    </td-tab-panel>
+    <td-tab-panel label="约会" name="date">
+      <view slot="icon">
+        <i class="fa fa-heart"></i>
+      </view>
+    </td-tab-panel>
+  </td-tabs>
+  
+  <!-- 穿搭推荐 -->
+  <view class="mt-4">
+    <view class="text-sm font-medium mb-2">今日推荐穿搭</view>
+    <view class="flex items-center justify-between">
+      <view class="flex space-x-2">
+        <image src="https://picsum.photos/seed/top1/60/80" mode="aspectFill" class="w-15 h-20 rounded-md object-cover scene-tab"></image>
+        <image src="https://picsum.photos/seed/bottom1/60/80" mode="aspectFill" class="w-15 h-20 rounded-md object-cover scene-tab"></image>
+        <image src="https://picsum.photos/seed/shoes1/60/80" mode="aspectFill" class="w-15 h-20 rounded-md object-cover scene-tab"></image>
+        <image src="https://picsum.photos/seed/bag1/60/80" mode="aspectFill" class="w-15 h-20 rounded-md object-cover scene-tab"></image>
+      </view>
+      <td-button theme="text" size="small" class="text-primary p-0" bind:click="onChangeOutfit">
+        换一套 <i class="fa fa-refresh ml-1"></i>
+      </td-button>
+    </view>
+    <view class="mt-2 text-xs text-neutral-light">棉麻+牛仔+透气鞋 · 舒适凉爽</view>
+  </view>
+</view>

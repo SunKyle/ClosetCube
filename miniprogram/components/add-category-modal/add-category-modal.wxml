@@ -1,0 +1,18 @@
+<t-popup visible="{{visible}}"
+         bind:visible-change="onVisibleChange"
+         placement="center">
+    <view class="block">
+        <t-input value="{{newCategoryName}}"
+                 style="border-radius: 18rpx"
+                 placeholder="请输入分类"
+                 bind:change="onCategoryInput" />
+        <t-button theme="light"
+                  size="largei"
+                  bind:tap="onConfirm">添加</t-button>
+        <t-icon t-class="close-btn"
+                name="close-circle"
+                size="64rpx"
+                color="#fff"
+                bind:tap="onClose" />
+    </view>
+</t-popup>

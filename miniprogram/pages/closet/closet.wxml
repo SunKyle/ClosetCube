@@ -1,27 +1,65 @@
-<!-- 1. 顶部导航栏组件 -->
-<closet-bar isEditMode="true"></closet-bar>
+<!-- 搜索框 -->
+<view class="example-search">
+    <t-search value="{{searchValue}}"
+              center
+              confirm-type="search"
+              placeholder="搜索衣服"
+              bind:change="onChange"
+              bind:blur="blurHandle" />
+</view>
 
+<!-- 分类区 -->
+<view class="side-bar-wrapper"
+      style="height: calc(100vh - {{navbarHeight}}px)">
+    <!-- 分类大项 -->
+    <t-side-bar value="{{selectedMainCategories}}"
+                style="left: auto;"
+                bind:change="onSideBarChange">
+        <t-side-bar-item wx:for="{{mainCategories}}"
+                         wx:key="label"
+                         value="{{item.value || index}}"
+                         label="{{item.label}}"
+                         icon="{{item.icon}}"
+                         data-index="{{index}}"
+                         bind:longpress="onSiderLongpress" />
+        <!-- 新增分类按钮 -->
+        <view class="add-category-btn"
+              bind:tap="handlePopup">
+            <t-icon name="add"
+                    size="20"
+                    class="add-icon" />
+            <text class="add-text">添加分类</text>
+        </view>
+    </t-side-bar>
 
-<!-- 衣物卡片 -->
-<clothes-card 
-    wx:for="{{clothesList}}" 
-    wx:key="id"
-    clothes="{{item}}"
-    isEditMode="{{isEditMode}}"
-    bind:cardClick="onCardClick"
-    bind:cardLongPress="onCardLongPress"
-    bind:favoriteChange="onFavoriteChange"
-    bind:delete="onDeleteClothes"
-  />
-<!-- <clothes-card 
-  wx:for="{{clothesList}}" 
-  wx:key="id"
-  item="{{item}}"
-  showEditButtons="{{showEditButtons}}"
-  currentId="{{currentId}}"
-  bind:cardtap="onCardTap"
-  bind:longpress="onCardLongPress"
-  bind:edit="onEditClothes"
-  bind:delete="onDeleteClothes"
-  bind:togglefavorite="onToggleFavorite"
-></clothes-card> -->
+    <!-- 新增分类弹窗 -->
+    <add-category-modal visible="{{visible}}"
+                        categories="{{mainCategories}}"
+                        bind:close="onClose"
+                        bind:add="addCategory" />
+
+    <!-- 展示区 -->
+    <scroll-view class="content"
+                 scroll-y
+                 scroll-with-animation
+                 scroll-top="{{scrollTop}}"
+                 bind:scroll="onScroll">
+        <view wx:for="{{categories}}"
+              wx:key="label"
+              class="section">
+            <view class="title">{{item.title || item.label}}</view>
+            <t-grid column="{{3}}"
+                    border="{{false}}">
+                <block wx:for="{{item.items}}"
+                       wx:key="index"
+                       wx:for-item="cargo">
+                    <t-grid-item t-class-image="image"
+                                 text="{{cargo.label}}"
+                                 image="{{cargo.image}}"
+                                 image-props="{{ { shape: 'round', lazy: true } }}">
+                    </t-grid-item>
+                </block>
+            </t-grid>
+        </view>
+    </scroll-view>
+</view>
